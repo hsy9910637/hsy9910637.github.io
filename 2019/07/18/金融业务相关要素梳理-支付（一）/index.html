@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="支付一直是金融业务中的核心模块，他关系到整个金融业务流程的资金流转。如果把金融业务比作一个人，那么支付模块就像是心脏的功能，血液循环都靠着它来驱动，而一旦它出现了问题，那么金融的业务就基本停滞更甚者会造成巨大的经济损失。以下是我对支付相关内容的一个梳理 协议支付协议支付的概念我其实理解为“代扣”的合规版本。以往代扣业务虽然后中国人民银行发布的政策规定，必须要强调付款人的开户机构，包括商业银行或者支">
+<meta name="keywords" content="工作,技能,金融,支付">
+<meta property="og:type" content="article">
+<meta property="og:title" content="金融业务相关要素梳理-支付（一）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;07&#x2F;18&#x2F;%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%94%AF%E4%BB%98%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="闲猫书屋">
+<meta property="og:description" content="支付一直是金融业务中的核心模块，他关系到整个金融业务流程的资金流转。如果把金融业务比作一个人，那么支付模块就像是心脏的功能，血液循环都靠着它来驱动，而一旦它出现了问题，那么金融的业务就基本停滞更甚者会造成巨大的经济损失。以下是我对支付相关内容的一个梳理 协议支付协议支付的概念我其实理解为“代扣”的合规版本。以往代扣业务虽然后中国人民银行发布的政策规定，必须要强调付款人的开户机构，包括商业银行或者支">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-24T09:30:26.000Z">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/18/%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%94%AF%E4%BB%98%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>金融业务相关要素梳理-支付（一） | 闲猫书屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">闲猫书屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">言念君子，温其如玉</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%94%AF%E4%BB%98%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="洪思远"/>
+      <meta itemprop="description" content="wechat：hsy9910637"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲猫书屋"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">金融业务相关要素梳理-支付（一）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-18 20:39:21" itemprop="dateCreated datePublished" datetime="2019-07-18T20:39:21+08:00">2019-07-18</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-24 17:30:26" itemprop="dateModified" datetime="2019-07-24T17:30:26+08:00">2019-07-24</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>支付一直是金融业务中的核心模块，他关系到整个金融业务流程的资金流转。如果把金融业务比作一个人，那么支付模块就像是心脏的功能，血液循环都靠着它来驱动，而一旦它出现了问题，那么金融的业务就基本停滞更甚者会造成巨大的经济损失。以下是我对支付相关内容的一个梳理</p>
+<h2 id="协议支付"><a href="#协议支付" class="headerlink" title="协议支付"></a>协议支付</h2><p>协议支付的概念我其实理解为“代扣”的合规版本。以往代扣业务虽然后中国人民银行发布的政策规定，<strong>必须要强调付款人的开户机构，包括商业银行或者支付机构，一定要从手臂交易就明确付款人的授权</strong>换句话说从规定上来说代扣只能在用户授权的情况下，才能把钱划走。但是实际的情况是什么呢，很多机构只要通过一定的方式获得用户的四要素（姓名、手机号、卡号、预留手机号）或者二要素（姓名，卡号）就可以在用户并不知情的情况下，就把用户银行卡内的钱划走，这就造成了巨大的风险。大公司可能不敢这么做，但是对于那些下沉在监管阴影之后的那些现金贷、超利贷来说呢？本身就是冒着杀头的风险在做这种业务，到时候脖子上是挨一刀还是两刀其实又有啥区别呢。对于这些金融机构，他们最终的目的就是将自己放出去的钱，以各种可能的方式收回来。<br>而协议支付是什么概念呢，<strong>用户需要授权商户，商户才能有代扣的权利</strong>。实际情况中就是商户要是想要能够获得在不告知用户的情况下就从用户的银行卡扣钱的能力，必须要获得用户的授权，而这个授权就是通过第三方支付机构发起鉴定授权（鉴权），由银行/网联校验鉴权信息。再说的通俗一点儿，就是用户必须要输入短信验证码，商户才可以完成鉴权流程，然后才可以代扣用户的钱。<br>在用户环节，他们的感知很有可能就是多了一道短信验证码，但是这也一位置能让第三方支付机构更加透明合规</p>
+<h2 id="代付"><a href="#代付" class="headerlink" title="代付"></a>代付</h2><p>代付的概念就很简单了，顾名思义就是“代替支付”。谁来代替支付？那些第三支付机构来代替支付。商家会在第三方支付机构上开设一个商户号，然后将一定的钱存放在这个商户号内。进行业务的时候，钱不是直接从商家这边流出，而是通过第三方支付机构流出。同样的收款也是通过协议支付先收款到第三方支付的商户号内。</p>
+<h2 id="第三方支付"><a href="#第三方支付" class="headerlink" title="第三方支付"></a>第三方支付</h2><p>第三方支付的商家有很多，比如我业务中接触过的就有易宝、合利宝、快钱、瑞银信、畅捷通、盛嘉迪等第三方支付公司。<br>以下是百度对于第三方支付机构的一段说明<br><a href="https://baike.baidu.com/item/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/3625139?fr=aladdin" target="_blank" rel="noopener">第三方支付百度百科</a></p>
+<blockquote>
+<p>第三方支付是指具备一定实力和信誉保障的独立机构，通过与网联对接而促成交易双方进行交易的网络支付模式。在第三方支付模式，买方选购商品后，使用第三方平台提供的账户进行货款支付（支付给第三方），并由第三方通知卖家货款到账、要求发货；买方收到货物，检验货物，并且进行确认后，再通知第三方付款；第三方再将款项转至卖家账户。</p>
+</blockquote>
+<p><strong>第三方支付平台他们主要的盈利方式有三种</strong></p>
+<ol>
+<li>手续费：包括交易手续费和售卡手续费（发放的预售卡、会员卡等）</li>
+<li>残值：第三方支付平台发放的卡，用户会剩下一部分钱，购物也不够用，扔掉也不可惜的那种。但是因为发卡量大，所以在用户卡到期后积累的残值归发卡机构所有也是不小的收益</li>
+<li>资金沉淀：当商户打钱到第三方支付平台后，再到充值到商户号中，会有一定的时间间隔，这段时间间隔对资金进行一定的操作也会有一定量的收益。</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag"># 工作</a>
+          
+            <a href="/tags/%E6%8A%80%E8%83%BD/" rel="tag"># 技能</a>
+          
+            <a href="/tags/%E9%87%91%E8%9E%8D/" rel="tag"># 金融</a>
+          
+            <a href="/tags/%E6%94%AF%E4%BB%98/" rel="tag"># 支付</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/18/%E5%81%A5%E8%BA%AB/" rel="next" title="健身">
+                <i class="fa fa-chevron-left"></i> 健身
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/24/%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%B5%81%E9%87%8F%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="prev" title="金融业务相关要素梳理-流量（二）">
+                金融业务相关要素梳理-流量（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">洪思远</p>
+              <div class="site-description motion-element" itemprop="description">wechat：hsy9910637</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/mailto:hongsiyuan9910637@126.com" title="E-Mail &amp;rarr; mailto:hongsiyuan9910637@126.com" rel="noopener" target="_blank">&lt;i class=&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#协议支付"><span class="nav-number">1.</span> <span class="nav-text">协议支付</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代付"><span class="nav-number">2.</span> <span class="nav-text">代付</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方支付"><span class="nav-number">3.</span> <span class="nav-text">第三方支付</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">洪思远</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.9' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+  
+  
+
+  
+    
+  
+
+  
+
+  
+
+  <script>
+    ;((d, w) => {
+      loadThree = () => {
+        let s = d.createElement('script');
+        s.src = '/lib/three/three.min.js';
+        d.body.appendChild(s);
+      }
+      let styles = ['/lib/three/three-waves.min.js', '', ''];
+      loadStyle = () => {
+        styles.forEach(x => {
+          if (x !== '') {
+            let s = d.createElement('script');
+            s.src = x;
+            d.body.appendChild(s);
+          }
+        })
+      }
+      w.addEventListener('DOMContentLoaded', loadThree);
+      w.addEventListener('load', loadStyle);
+    })(document, window);
+  </script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

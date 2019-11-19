@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="仅针对我在做的小额信贷业务用户各方面进行一个梳理 用户来源贷超贷超即贷款超市，顾名思义这是一个撮合用户和贷款产品交易的平台。贷超展现形式一般是以列表形式展现一连串的贷款产品。贷款产品上架贷超后，能够获得用户流量，但是流量大小、流量好坏其实很大程度上和贷款产品在列表什么位置上关联。而位置又取决于贷超平台的运营、商务。因此在一些管理不严格的贷超平台，想要好位置就得跟商务、运营疯狂py。另外贷超流量质量">
+<meta name="keywords" content="工作,技能,金融,流量,用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="金融业务相关要素梳理-流量（二）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;07&#x2F;24&#x2F;%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%B5%81%E9%87%8F%EF%BC%88%E4%BA%8C%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="闲猫书屋">
+<meta property="og:description" content="仅针对我在做的小额信贷业务用户各方面进行一个梳理 用户来源贷超贷超即贷款超市，顾名思义这是一个撮合用户和贷款产品交易的平台。贷超展现形式一般是以列表形式展现一连串的贷款产品。贷款产品上架贷超后，能够获得用户流量，但是流量大小、流量好坏其实很大程度上和贷款产品在列表什么位置上关联。而位置又取决于贷超平台的运营、商务。因此在一些管理不严格的贷超平台，想要好位置就得跟商务、运营疯狂py。另外贷超流量质量">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-25T14:17:50.000Z">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/24/%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%B5%81%E9%87%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>金融业务相关要素梳理-流量（二） | 闲猫书屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">闲猫书屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">言念君子，温其如玉</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section">&lt;i class=&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%B5%81%E9%87%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="洪思远"/>
+      <meta itemprop="description" content="wechat：hsy9910637"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲猫书屋"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">金融业务相关要素梳理-流量（二）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-24 17:31:36" itemprop="dateCreated datePublished" datetime="2019-07-24T17:31:36+08:00">2019-07-24</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-25 22:17:50" itemprop="dateModified" datetime="2019-07-25T22:17:50+08:00">2019-07-25</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>仅针对我在做的小额信贷业务用户各方面进行一个梳理</p>
+<h1 id="用户来源"><a href="#用户来源" class="headerlink" title="用户来源"></a>用户来源</h1><h2 id="贷超"><a href="#贷超" class="headerlink" title="贷超"></a>贷超</h2><p>贷超即贷款超市，顾名思义这是一个撮合用户和贷款产品交易的平台。贷超展现形式一般是以列表形式展现一连串的贷款产品。贷款产品上架贷超后，能够获得用户流量，但是流量大小、流量好坏其实很大程度上和贷款产品在列表什么位置上关联。而位置又取决于贷超平台的运营、商务。因此在一些管理不严格的贷超平台，想要好位置就得跟商务、运营疯狂py。另外贷超流量质量参差不齐，很多贷超的流量来源于上游贷超，上游贷超流量又来源于更上游的贷超，追本溯源，不过就是头部贷超的优质流量层层渗透而已。<br>贷超的接入方式有2中</p>
+<ol>
+<li>H5形式接入。商家提供一个用户可以填写手机号、验证码等信息注册的H5链接，注册后通过这个H5链接进行应用的下载。</li>
+<li>API形式接入。前端页面全部在贷超上，商户通过接口与贷超进行数据沟通。api形式接入的贷超会对商家有更加高的控制力，但是通常用户的质量会更加好（前筛由贷超都做掉了）、量更加大。且只有大贷超才会去开发api接入商户。用来把控商户防止扣量，同时获取更多用户数据。</li>
+</ol>
+<h2 id="白名单"><a href="#白名单" class="headerlink" title="白名单"></a>白名单</h2><p>有玩家入场就有玩家离场，而离场玩家手上积压的用户数据就可以最后发光发热一下。离场玩家会将之前成功借款并且还款的用户的手机号清单提供给其他在场玩家。这些用户的质量其实挺一言难尽的。其一，用户成功借款还款过，所以这批白名单完美契合用户人群；其二，用户比较容易过风控，注册转化率，转化申请率等数据会比较好。；其三，用户已经接触小贷产品一段时间，如果是已经借款多次的用户，很有可能是已经到了生命周期末期，他们有借款的欲望，但是已经无法承受还款的压力。</p>
+<h2 id="自然流量"><a href="#自然流量" class="headerlink" title="自然流量"></a>自然流量</h2><p>产品上架appstore，安卓各大应用市场，吸引的用户流量。</p>
+<h2 id="电销、短信"><a href="#电销、短信" class="headerlink" title="电销、短信"></a>电销、短信</h2><p>渠道方根据自己手上拥有的用户数据，通过电话营销和短信营销的方式，引导用户去进行某个贷款产品的下载。当然这个其实也已经包含了上述描述的白名单的方式。通常是引导跳转到有下载地址的H5地址</p>
+<h1 id="流量的结算方式"><a href="#流量的结算方式" class="headerlink" title="流量的结算方式"></a>流量的结算方式</h1><ol>
+<li>uv结算（cpc）：通常贷超等优质渠道会以这种方式结算。由于贷超可以获取真实的用户访问各个产品的uv数据，也不受产品本身流程、金额等导致转化率不佳的影响。所以这种方式也是流量方最喜欢的方式。市场价在10-40uv不等</li>
+<li>cpa结算：以一个用户注册。这种方式是商户方比较愿意接受的方式。原因在于成本更低且，由于流量方如果不是接入api的，都没办法知道真实的注册数，所以可以进行扣量处理来进一步降低成本。而扣量基本上是行业内约定俗称的方式。比如我有100个注册，我扣量20%，跟流量方以80个注册进行结算。那按照市场价15a左右的话，就可以省下300的流量成本。流量方呢也一般知道会有这种现象存在，但是抱着和气生财的态度，一般只要不是太过于明显的扣量都会睁一只眼闭一只。</li>
+<li>cps结算：按照下款结算。通常只有比较差的渠道没有足够的底气才会用cps的方式来跟商户进行结算。市场价在320s-380s不等。同样可以进行扣量处理</li>
+<li>进件结算：这种结算只有在以api的形式接入到贷超内才会用这种方式结算，进件的意思就是用户进入贷超后，填写了各项基本信息，如手机号、身份证、紧急联系人、姓名等等基本信息。经过前筛后，贷超将用户信息推送给商户即为一个进件。用户每次结束完一个借款还款流程后，都会重新计算进件费用。这种方式贷超方能获得详细真实的数据，商户也没办法扣量。所以流量成本较高，但是用户质量会更好，量也会很大。</li>
+</ol>
+<p><strong>ps:</strong>流量市场风起云涌。我领导常感叹，买流量就像炒股票一样。价格受多方面因素影响（市场、政治、监管等等）价格就像过山车一样。实在很难预测流量市场的价格走向。往往2个礼拜左右就是一个小市场波动，2个月就是个大市场波动。我们自己接触渠道方的时候更是感觉到每一天就算上午和下午都会有明显价格差异。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag"># 工作</a>
+          
+            <a href="/tags/%E6%8A%80%E8%83%BD/" rel="tag"># 技能</a>
+          
+            <a href="/tags/%E9%87%91%E8%9E%8D/" rel="tag"># 金融</a>
+          
+            <a href="/tags/%E6%B5%81%E9%87%8F/" rel="tag"># 流量</a>
+          
+            <a href="/tags/%E7%94%A8%E6%88%B7/" rel="tag"># 用户</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/18/%E9%87%91%E8%9E%8D%E4%B8%9A%E5%8A%A1%E7%9B%B8%E5%85%B3%E8%A6%81%E7%B4%A0%E6%A2%B3%E7%90%86-%E6%94%AF%E4%BB%98%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="金融业务相关要素梳理-支付（一）">
+                <i class="fa fa-chevron-left"></i> 金融业务相关要素梳理-支付（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/12/google%20play%E4%B8%8A%E6%9E%B6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" rel="prev" title="google play注意事项">
+                google play注意事项 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">洪思远</p>
+              <div class="site-description motion-element" itemprop="description">wechat：hsy9910637</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/mailto:hongsiyuan9910637@126.com" title="E-Mail &amp;rarr; mailto:hongsiyuan9910637@126.com" rel="noopener" target="_blank">&lt;i class=&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户来源"><span class="nav-number">1.</span> <span class="nav-text">用户来源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#贷超"><span class="nav-number">1.1.</span> <span class="nav-text">贷超</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#白名单"><span class="nav-number">1.2.</span> <span class="nav-text">白名单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自然流量"><span class="nav-number">1.3.</span> <span class="nav-text">自然流量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电销、短信"><span class="nav-number">1.4.</span> <span class="nav-text">电销、短信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流量的结算方式"><span class="nav-number">2.</span> <span class="nav-text">流量的结算方式</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">洪思远</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.9' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+  
+  
+
+  
+    
+  
+
+  
+
+  
+
+  <script>
+    ;((d, w) => {
+      loadThree = () => {
+        let s = d.createElement('script');
+        s.src = '/lib/three/three.min.js';
+        d.body.appendChild(s);
+      }
+      let styles = ['/lib/three/three-waves.min.js', '', ''];
+      loadStyle = () => {
+        styles.forEach(x => {
+          if (x !== '') {
+            let s = d.createElement('script');
+            s.src = x;
+            d.body.appendChild(s);
+          }
+        })
+      }
+      w.addEventListener('DOMContentLoaded', loadThree);
+      w.addEventListener('load', loadStyle);
+    })(document, window);
+  </script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
